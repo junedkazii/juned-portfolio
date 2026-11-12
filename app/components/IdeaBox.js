@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import SplitWords from './SplitWords';
 
 const examples = [
   { label: 'Booking app', text: 'A booking app for yoga teachers with monthly payments' },
@@ -68,6 +69,55 @@ export default function IdeaBox({ bookingUrl }) {
   const [plan, setPlan] = useState(null);
   const [error, setError] = useState(false);
 
+  // Animated placeholder: types out example ideas until the visitor starts typing.
+  const [hint, setHint] = useState(examples[0].text);
+  const [focused, setFocused] = useState(false);
+  const [visible, setVisible] = useState(false);
+  const sectionRef = useRef(null);
+
+  useEffect(() => {
+    const el = sectionRef.current;
+    if (!el || !('IntersectionObserver' in window)) return;
+    const io = new IntersectionObserver(([entry]) => setVisible(entry.isIntersecting), { threshold: 0.2 });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce || idea || focused || !visible) return;
+    let item = 0;
+    let pos = 0;
+    let deleting = false;
+    let timer;
+    const tick = () => {
+      const full = examples[item].text;
+      if (!deleting) {
+        pos += 1;
+        setHint(full.slice(0, pos));
+        if (pos === full.length) {
+          deleting = true;
+          timer = setTimeout(tick, 1800);
+          return;
+        }
+        timer = setTimeout(tick, 38);
+      } else {
+        pos -= 1;
+        setHint(full.slice(0, pos));
+        if (pos === 0) {
+          deleting = false;
+          item = (item + 1) % examples.length;
+          timer = setTimeout(tick, 350);
+          return;
+        }
+        timer = setTimeout(tick, 16);
+      }
+    };
+    setHint('');
+    timer = setTimeout(tick, 500);
+    return () => clearTimeout(timer);
+  }, [idea, focused, visible]);
+
   function build(text) {
     if (!text.trim()) {
       setError(true);
@@ -79,11 +129,11 @@ export default function IdeaBox({ bookingUrl }) {
   }
 
   return (
-    <section id="idea" className="idea">
+    <section id="idea" className="idea" ref={sectionRef}>
       <div className="wrap reveal">
         <p className="mono">Free · takes 10 seconds</p>
-        <h2 className="h2">
-          Have an idea? See how <em>I&apos;d build it.</em>
+        <h2 className="h2 words">
+          <SplitWords parts={[{ t: 'Have an idea? See how ' }, { t: "I'd build it.", em: true }]} />
         </h2>
         <p className="idea-lead">
           Describe it in one line. You&apos;ll get a simple 3-step build plan and a rough estimate.
@@ -106,7 +156,9 @@ export default function IdeaBox({ bookingUrl }) {
                 setIdea(e.target.value);
                 setError(false);
               }}
-              placeholder="A booking app for yoga teachers with monthly payments"
+              placeholder={focused ? examples[0].text : `${hint}|`}
+              onFocus={() => setFocused(true)}
+              onBlur={() => setFocused(false)}
               autoComplete="off"
               maxLength={200}
               aria-describedby={error ? 'idea-error' : undefined}

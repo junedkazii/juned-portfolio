@@ -1,7 +1,8 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import IdeaBox from './components/IdeaBox';
-import Reveal from './components/Reveal';
 import ProjectShots from './components/ProjectShots';
+import SplitWords from './components/SplitWords';
 import {
   site,
   links,
@@ -17,32 +18,13 @@ import {
   shipLog,
   faqs,
 } from './data';
+import { tools } from './content';
 
 const ext = { target: '_blank', rel: 'noopener noreferrer' };
 
 export default function Home() {
   return (
     <>
-      <header className="header">
-        <nav className="nav" aria-label="Main">
-          <a href="#top" className="logo">
-            {site.name}
-            <span>.</span>
-          </a>
-          <div className="nav-right">
-            <div className="nav-links">
-              <a href="#work">Work</a>
-              <a href="#services">Services</a>
-              <a href="#process">Process</a>
-              <a href="#idea">Free plan</a>
-            </div>
-            <a href={links.booking} {...ext} className="btn btn-dark">
-              Book a call
-            </a>
-          </div>
-        </nav>
-      </header>
-
       <main>
         {/* 1. Hero */}
         <section id="top" className="hero">
@@ -50,17 +32,23 @@ export default function Home() {
             <div>
               <p className="eyebrow mono rise">
                 <span className="dot-live" aria-hidden="true" />
-                {site.title}
+                <span data-scramble>{site.title}</span>
               </p>
-              <h1 className="rise">
-                I build SaaS apps that <em>go live</em> and take payments.
+              <h1 className="words words-now">
+                <SplitWords
+                  parts={[
+                    { t: 'I build SaaS apps that ' },
+                    { t: 'go live', em: true, underline: true },
+                    { t: ' and take payments.' },
+                  ]}
+                />
               </h1>
               <p className="hero-sub rise">
                 Hi, I&apos;m Juned. I turn your idea into a working web app with login, dashboard, AI and
                 payments, from first call to launch.
               </p>
               <div className="hero-actions rise">
-                <a href={links.booking} {...ext} className="btn btn-dark">
+                <a href={links.booking} {...ext} className="btn btn-dark" data-magnetic>
                   Book a free 20-min call →
                 </a>
                 <a href="#work" className="link-line">
@@ -107,14 +95,28 @@ export default function Home() {
               {stats.map((s) => (
                 <div className="stat" key={s.label}>
                   <div className="stat-value">
-                    {s.value}
+                    <span data-count={s.value}>{s.value}</span>
                     {s.accent && <em>{s.accent}</em>}
                   </div>
                   <div className="stat-label">{s.label}</div>
                 </div>
               ))}
             </div>
-            <p className="stack mono reveal">Built with · {stack.join(' · ')}</p>
+            <div className="stack-row reveal">
+              <p className="mono stack-label">Built with</p>
+              <div className="marquee">
+                <p className="sr-only">{stack.join(', ')}</p>
+                <div className="marquee-track" aria-hidden="true">
+                  {[0, 1].map((half) => (
+                    <div className={half ? 'marquee-half dup' : 'marquee-half'} key={half}>
+                      {[...stack, ...stack].map((item, i) => (
+                        <span key={`${half}-${i}`}>{item}</span>
+                      ))}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -122,14 +124,19 @@ export default function Home() {
         <section id="work" className="section">
           <div className="wrap">
             <div className="section-head reveal">
-              <h2 className="h2">
-                Selected <em>work</em>
+              <h2 className="h2 words">
+                <SplitWords parts={[{ t: 'Selected ' }, { t: 'work', em: true }]} />
               </h2>
               <p>Not mockups. Both products are live, so open them and click around.</p>
             </div>
 
             {projects.map((p, i) => (
-              <article key={p.name} className={i % 2 === 1 ? 'project alt reveal' : 'project reveal'}>
+              <article
+                key={p.name}
+                className={i % 2 === 1 ? 'project alt reveal' : 'project reveal'}
+                data-spotlight
+                data-tilt
+              >
                 <div>
                   <p className="project-meta mono">
                     {p.number} · Live SaaS · <span className="live">● Live</span>
@@ -146,11 +153,9 @@ export default function Home() {
                     <a href={p.url} {...ext} className="btn btn-dark">
                       Open live ↗
                     </a>
-                    {p.caseStudy && (
-                      <a href={p.caseStudy} {...ext} className="link-line">
-                        Read the case study
-                      </a>
-                    )}
+                    <Link href={`/work/${p.name.toLowerCase()}`} className="link-line">
+                      Read the case study
+                    </Link>
                   </div>
                 </div>
                 <ProjectShots name={p.name} domain={p.domain} images={p.images} />
@@ -162,8 +167,8 @@ export default function Home() {
         {/* 4. Why me */}
         <section className="section">
           <div className="wrap">
-            <h2 className="h2 why-title reveal">
-              You get a founder, <em>not just a coder</em>
+            <h2 className="h2 why-title reveal words">
+              <SplitWords parts={[{ t: 'You get a founder, ' }, { t: 'not just a coder', em: true }]} />
             </h2>
             <div className="reasons">
               {reasons.map((r, i) => (
@@ -184,13 +189,13 @@ export default function Home() {
         <section id="services" className="section">
           <div className="wrap">
             <div className="section-head reveal">
-              <h2 className="h2">
-                What I can <em>build for you</em>
+              <h2 className="h2 words">
+                <SplitWords parts={[{ t: 'What I can ' }, { t: 'build for you', em: true }]} />
               </h2>
               <p>Fixed packages, fixed prices. Pick one, or book a call and we&apos;ll shape it together.</p>
             </div>
             <div className="services">
-              <div className="featured reveal">
+              <div className="featured reveal" data-spotlight>
                 <p className="mono">Most asked</p>
                 <h3>{featuredService.name}</h3>
                 <p className="featured-promise">{featuredService.promise}</p>
@@ -201,7 +206,7 @@ export default function Home() {
                   </span>
                   <span>{featuredService.time}</span>
                 </div>
-                <a href={links.booking} {...ext} className="btn btn-accent">
+                <a href={links.booking} {...ext} className="btn btn-accent" data-magnetic>
                   Ask about an MVP →
                 </a>
               </div>
@@ -220,7 +225,7 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <div className="rescue reveal">
+            <div className="rescue reveal" data-spotlight>
               <div className="rescue-copy">
                 <p className="mono">{rescue.label}</p>
                 <h3>{rescue.title}</h3>
@@ -237,14 +242,19 @@ export default function Home() {
                 </a>
               </div>
             </div>
+            <p className="more-link reveal">
+              <Link href="/services" className="link-line">
+                See every package in detail →
+              </Link>
+            </p>
           </div>
         </section>
 
         {/* 6. Process */}
         <section id="process" className="section">
           <div className="wrap">
-            <h2 className="h2 reveal" style={{ marginBottom: 40 }}>
-              From first call <em>to launch</em>
+            <h2 className="h2 reveal words" style={{ marginBottom: 40 }}>
+              <SplitWords parts={[{ t: 'From first call ' }, { t: 'to launch', em: true }]} />
             </h2>
             <ol className="steps">
               {processSteps.map((s) => (
@@ -259,6 +269,32 @@ export default function Home() {
           </div>
         </section>
 
+        {/* 6b. Free tools */}
+        <section id="tools" className="section">
+          <div className="wrap">
+            <div className="section-head reveal">
+              <h2 className="h2 words">
+                <SplitWords parts={[{ t: 'Free tools ' }, { t: 'for founders', em: true }]} />
+              </h2>
+              <p>Small, useful tools I built. Use them free, no sign-up.</p>
+            </div>
+            <div className="tool-grid">
+              {tools.map((tool, i) => (
+                <Link key={tool.slug} href={`/tools/${tool.slug}`} className="tool-card reveal" data-spotlight>
+                  <span className="mono tool-label">
+                    {String(i + 1).padStart(2, '0')} · {tool.label}
+                  </span>
+                  <span className="tool-name">{tool.name}</span>
+                  <span className="tool-short">{tool.short}</span>
+                  <span className="tool-go" aria-hidden="true">
+                    Open tool →
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* 7. Free plan (idea box) */}
         <IdeaBox bookingUrl={links.booking} />
 
@@ -266,8 +302,8 @@ export default function Home() {
         <section id="log" className="section">
           <div className="wrap split">
             <div className="split-intro reveal">
-              <h2 className="h2">
-                Ship <em>log</em>
+              <h2 className="h2 words">
+                <SplitWords parts={[{ t: 'Ship ' }, { t: 'log', em: true }]} />
               </h2>
               <p>No skills list. Just what I actually shipped, newest first.</p>
             </div>
@@ -288,8 +324,8 @@ export default function Home() {
         {/* 9. FAQ */}
         <section id="faq" className="section">
           <div className="wrap split">
-            <h2 className="h2 reveal">
-              Questions <em>founders ask</em>
+            <h2 className="h2 reveal words">
+              <SplitWords parts={[{ t: 'Questions ' }, { t: 'founders ask', em: true }]} />
             </h2>
             <div className="faq reveal">
               {faqs.map((f) => (
@@ -304,14 +340,14 @@ export default function Home() {
 
         {/* 10. Contact */}
         <section id="contact" className="contact">
-          <div className="contact-card reveal">
+          <div className="contact-card reveal" data-spotlight>
             <p className="mono">Open slots · {status.slots}</p>
-            <h2>
-              Got an idea? <em>Let&apos;s ship it.</em>
+            <h2 className="words">
+              <SplitWords parts={[{ t: 'Got an idea? ' }, { t: "Let's ship it.", em: true }]} />
             </h2>
             <p>Tell me what you&apos;re building. I reply {status.replies}.</p>
             <div className="contact-actions">
-              <a href={links.booking} {...ext} className="btn btn-accent">
+              <a href={links.booking} {...ext} className="btn btn-accent" data-magnetic>
                 Book a free 20-min call
               </a>
               <a href={links.email} className="btn btn-ghost-dark">
@@ -326,33 +362,6 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <Reveal />
-
-      <footer className="footer">
-        <div className="wrap">
-          <span>
-            © {new Date().getFullYear()} {site.name} · {site.title}
-          </span>
-          <nav aria-label="Social">
-            {links.linkedin && (
-              <a href={links.linkedin} {...ext}>
-                LinkedIn
-              </a>
-            )}
-            {links.x && (
-              <a href={links.x} {...ext}>
-                X
-              </a>
-            )}
-            {links.github && (
-              <a href={links.github} {...ext}>
-                GitHub
-              </a>
-            )}
-            <a href={links.email}>Email</a>
-          </nav>
-        </div>
-      </footer>
     </>
   );
 }
