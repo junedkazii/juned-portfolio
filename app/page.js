@@ -3,6 +3,8 @@ import Link from 'next/link';
 import IdeaBox from './components/IdeaBox';
 import ProjectShots from './components/ProjectShots';
 import SplitWords from './components/SplitWords';
+import AiBuilders from './components/AiBuilders';
+import ScrollButtons from './components/ScrollButtons';
 import {
   site,
   links,
@@ -250,6 +252,9 @@ export default function Home() {
           </div>
         </section>
 
+        {/* 5b. Built it with AI? */}
+        <AiBuilders />
+
         {/* 6. Process */}
         <section id="process" className="section">
           <div className="wrap">
@@ -298,23 +303,29 @@ export default function Home() {
         {/* 7. Free plan (idea box) */}
         <IdeaBox bookingUrl={links.booking} />
 
-        {/* 8. Ship log */}
+        {/* 8. The journey (ship log) */}
         <section id="log" className="section">
           <div className="wrap split">
             <div className="split-intro reveal">
               <h2 className="h2 words">
-                <SplitWords parts={[{ t: 'Ship ' }, { t: 'log', em: true }]} />
+                <SplitWords parts={[{ t: 'The journey ' }, { t: 'so far', em: true }]} />
               </h2>
-              <p>No skills list. Just what I actually shipped, newest first.</p>
+              <p>No skills list. Just what I actually shipped, step by step.</p>
             </div>
-            <ol className="log">
-              {shipLog.map((l) => (
-                <li key={l.title} className="reveal">
-                  <time>{l.date}</time>
-                  <div>
-                    <strong>{l.title}</strong>
-                    <p>{l.text}</p>
+            <ol className="journey">
+              {[...shipLog].reverse().map((l, i) => (
+                <li
+                  key={l.title}
+                  className={`reveal${i === 0 ? ' is-start' : ''}${i === shipLog.length - 1 ? ' is-latest' : ''}`}
+                >
+                  <span className="journey-dot" aria-hidden="true" />
+                  <div className="journey-meta">
+                    <time>{l.date}</time>
+                    {i === 0 && <span className="journey-tag journey-tag-start">Where it started</span>}
+                    {i === shipLog.length - 1 && <span className="journey-tag">Latest</span>}
                   </div>
+                  <strong>{l.title}</strong>
+                  <p>{l.text}</p>
                 </li>
               ))}
             </ol>
@@ -362,6 +373,7 @@ export default function Home() {
           </div>
         </section>
       </main>
+      <ScrollButtons />
     </>
   );
 }

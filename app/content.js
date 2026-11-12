@@ -20,8 +20,8 @@ export const caseStudies = {
     role: 'Solo founder: design, code, payments, launch',
     stack: ['Next.js', 'Firebase', 'Vercel', 'OpenAI', 'Razorpay', 'Dodo Payments', 'Google Analytics'],
     images: [
-      { label: 'Dashboard', src: '/dueblink-dashboard.png', path: '/dashboard' },
       { label: 'Landing page', src: '/dueblink-landing.png', path: '' },
+      { label: 'Dashboard', src: '/dueblink-dashboard.png', path: '/dashboard' },
     ],
     problem:
       "Freelancers lose real money because nobody follows up on late invoices. Chasing clients feels awkward, so reminders get sent late or never. I wanted a tool that does the chasing politely and on time, so the freelancer doesn't have to.",
@@ -68,8 +68,8 @@ export const caseStudies = {
     role: 'Solo founder: design, code, launch',
     stack: ['Next.js', 'TypeScript', 'Firebase Auth', 'Firestore', 'Tailwind CSS', 'jsPDF', 'Vercel'],
     images: [
-      { label: 'Dashboard', src: '/offboardpro-dashboard.png', path: '/dashboard' },
       { label: 'Landing page', src: '/offboardpro-landing.png', path: '' },
+      { label: 'Dashboard', src: '/offboardpro-dashboard.png', path: '/dashboard' },
     ],
     problem:
       "When a project ends, freelancers and agencies still have access to the client's ad accounts, analytics, hosting and code. Forgetting to remove it is a security risk and looks unprofessional. Most people track this in their head, or not at all.",
@@ -102,7 +102,7 @@ export const caseStudies = {
       },
     ],
     outcome:
-      'Live at offboardpro.com, my second SaaS built and launched solo. It shows I can model complex real-world workflows, not just simple forms.',
+      'Live at offboardpro.com, a SaaS I built and launched solo. It shows I can model complex real-world workflows, not just simple forms.',
   },
 };
 
@@ -209,3 +209,44 @@ export const tools = [
     label: 'AI-built apps',
   },
 ];
+
+// ───── "Built it with AI?" section (home + services). Edit any time. ─────
+export const aiBuilders = {
+  label: 'Lovable, Bolt, Emergent, Replit',
+  title: [{ t: 'Built it with AI? ' }, { t: "Here's what usually breaks.", em: true }],
+  intro:
+    'AI app builders are great for a first version. You can have a working demo in a day, and that is the right way to test an idea. The trouble starts when real users and real money arrive.',
+  fair: 'I use AI every day too. The difference is that I read and own the code, so I can fix what the AI gets wrong.',
+  problems: [
+    {
+      title: 'The demo works, the business doesn’t',
+      text: 'The first 80% is fast. The last 20% is what makes money: payments confirmed on the server, failed payments, refunds, your own domain.',
+      fix: 'I finish the last 20% properly.',
+    },
+    {
+      title: 'Security holes',
+      text: 'Open database rules let any user read other users’ data. API keys sit in the browser where anyone can copy them. Researchers have found hundreds of AI-built apps leaking data this way.',
+      fix: 'I lock down the database and move keys to the server.',
+    },
+    {
+      title: 'The prompt loop',
+      text: 'Fix one thing, two others break. Hours and credits go in circles because nobody can read what changed.',
+      fix: 'I fix it in the code, once.',
+    },
+    {
+      title: 'Nobody to call',
+      text: 'When payments stop at 2 AM, there is no developer. Just you and a chatbot.',
+      fix: 'You get a real person who knows your app.',
+    },
+    {
+      title: 'Hidden costs and lock-in',
+      text: 'Credits and plans add up, and your app is tied to their hosting. Moving out later is hard.',
+      fix: 'Your code on your GitHub, your hosting, your accounts.',
+    },
+    {
+      title: 'Hard to grow',
+      text: 'Messy code makes every new feature slower and riskier as the app gets bigger.',
+      fix: 'Clean structure that’s easy to build on.',
+    },
+  ],
+};

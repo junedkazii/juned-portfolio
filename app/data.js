@@ -21,10 +21,9 @@ const whatsappMessage = "Hi Juned, I saw your portfolio and I'd like to talk abo
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
 
 export const links = {
-  // Every "Book a call" button opens WhatsApp with a ready-made message.
-  // Later, to use Cal.com instead, replace whatsappLink with your Cal.com link, e.g. 'https://cal.com/juned/20min'
-  booking: whatsappLink,
-  email: 'mailto:kazijuned2@gmail.com',
+  // "Book a call" buttons open this Cal.com booking page
+  booking: 'https://cal.com/junedkazi/20min',
+  email: 'mailto:junedkaziofficiall@gmail.com',
   whatsapp: whatsappLink,
   // Social links: put your profile link in quotes to show it in the footer, or leave null to hide it.
   linkedin: null,
@@ -62,8 +61,8 @@ export const projects = [
     domain: 'dueblink.com',
     // Screenshots live in the "public" folder. The first one shows by default.
     images: [
-      { label: 'Dashboard', src: '/dueblink-dashboard.png', path: '/dashboard' },
       { label: 'Landing page', src: '/dueblink-landing.png', path: '' },
+      { label: 'Dashboard', src: '/dueblink-dashboard.png', path: '/dashboard' },
     ],
     // Later, a link to your case study (Notion, LinkedIn post or a page). null hides the button.
     caseStudy: null,
@@ -80,8 +79,8 @@ export const projects = [
     url: 'https://offboardpro.com',
     domain: 'offboardpro.com',
     images: [
-      { label: 'Dashboard', src: '/offboardpro-dashboard.png', path: '/dashboard' },
       { label: 'Landing page', src: '/offboardpro-landing.png', path: '' },
+      { label: 'Dashboard', src: '/offboardpro-dashboard.png', path: '/dashboard' },
     ],
     caseStudy: null,
   },
@@ -161,12 +160,13 @@ export const processSteps = [
 
 // Newest first. Add a new line at the TOP every time you ship something.
 export const shipLog = [
+  { date: 'Nov 2026', title: 'Fixed a false phishing flag on my domain', text: 'Browsers were blocking the site. Got it cleared.' },
   { date: 'Oct 2026', title: 'Started taking client projects', text: 'Same skills, now for other founders.' },
-  { date: 'Month YYYY', title: 'Launched OffboardPro', text: 'Second SaaS, built and launched solo.' }, // CHANGE date
-  { date: 'Month YYYY', title: 'Reminders in 4 languages', text: 'DueBlink users get reminders in their own language.' }, // CHANGE date
-  { date: 'Month YYYY', title: 'Added AI cost limits', text: "The AI features can't run up a surprise bill." }, // CHANGE date
-  { date: 'Month YYYY', title: 'Fixed a false phishing flag on my domain', text: 'Browsers were blocking the site. Got it cleared.' }, // CHANGE date
-  { date: 'Month YYYY', title: 'Added Razorpay payments', text: 'Indian customers can pay, verified on the server.' }, // CHANGE date
+  { date: 'Sep 2026', title: 'Reminders in 4 languages', text: 'DueBlink users get reminders in their own language.' },
+  { date: 'Sep 2026', title: 'Added AI cost limits', text: "The AI features can't run up a surprise bill." },
+  { date: 'Aug 2026', title: 'Launched DueBlink', text: 'Live in production and taking payments.' },
+  { date: 'Aug 2026', title: 'Added Razorpay payments', text: 'Indian customers can pay, verified on the server.' },
+  { date: 'Jan 2026', title: 'Launched OffboardPro', text: 'Built and launched solo.' },
 ];
 
 // The callout under Services, for people who already built something with an AI tool.

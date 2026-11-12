@@ -7,6 +7,9 @@ const ext = { target: '_blank', rel: 'noopener noreferrer' };
 export default function SiteFooter() {
   return (
     <footer className="footer">
+      <p className="wrap footer-quote reveal">
+        Your first paying customer is <em>one launch away.</em>
+      </p>
       <div className="wrap footer-grid">
         <div>
           <Link href="/" className="logo">
@@ -46,9 +49,11 @@ export default function SiteFooter() {
       </div>
       <div className="wrap footer-bottom">
         <span>
-          © {new Date().getFullYear()} {site.name}
+          © {new Date().getFullYear()} {site.name}. All rights reserved.
         </span>
-        <span>Designed and built by me, with Next.js</span>
+        <a href={links.booking} {...ext} className="footer-top">
+          <span className="dot-live" aria-hidden="true" /> Available for new projects
+        </a>
       </div>
     </footer>
   );

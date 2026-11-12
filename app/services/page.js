@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import SplitWords from '../components/SplitWords';
+import AiBuilders from '../components/AiBuilders';
 import { featuredService, services, processSteps, links } from '../data';
 import { serviceDetails, waLink } from '../content';
 
@@ -91,6 +92,8 @@ export default function ServicesPage() {
           })}
         </div>
       </section>
+
+      <AiBuilders />
 
       <section className="section">
         <div className="wrap">
