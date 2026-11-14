@@ -9,7 +9,7 @@ export const site = {
   name: 'Juned Kazi',
   title: 'SaaS developer for founders',
   // Your live website address. Update it after your first Vercel deploy.
-  url: 'https://junedkazi.vercel.app', // CHANGE
+  url: 'https://www.junedkazi.in', // CHANGE
   description:
     'I build SaaS apps that go live and take payments. Next.js, Firebase, AI and payments, from idea to launch.',
   // Put your photo in the "public" folder as juned.jpg, then change null to '/juned.jpg'
