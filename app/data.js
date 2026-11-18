@@ -9,7 +9,7 @@ export const site = {
   name: 'Juned Kazi',
   title: 'SaaS developer for founders',
   // Your live website address. Update it after your first Vercel deploy.
-  url: 'https://www.junedkazi.in', // CHANGE
+  url: 'https://www.junedkazi.in',
   description:
     'I build SaaS apps that go live and take payments. Next.js, Firebase, AI and payments, from idea to launch.',
   // Put your photo in the "public" folder as juned.jpg, then change null to '/juned.jpg'
@@ -83,6 +83,27 @@ export const projects = [
       { label: 'Dashboard', src: '/offboardpro-dashboard.png', path: '/dashboard' },
     ],
     caseStudy: null,
+  },
+];
+
+// Side projects: shown in a smaller block under the main work.
+export const sideProjects = [
+  {
+    number: '03',
+    name: 'ViceHeistGuide',
+    line: 'Free GTA 6 map, tracker and launch tools, built as a fan for other players.',
+    points: [
+      '3D game map and interactive map built without libraries',
+      'Free launch tools: unlock time, download calculator, controls',
+      'Installable app that works offline, hosted on Cloudflare',
+    ],
+    url: 'https://viceheistguide.com',
+    domain: 'viceheistguide.com',
+    images: [
+      { label: 'Landing page', src: '/viceheistguide-landing.png', path: '' },
+      { label: '3D map', src: '/viceheistguide-3d.png', path: '' },
+      { label: 'Interactive map', src: '/viceheistguide-map.png', path: '/gta-6-interactive-map' },
+    ],
   },
 ];
 
@@ -160,6 +181,7 @@ export const processSteps = [
 
 // Newest first. Add a new line at the TOP every time you ship something.
 export const shipLog = [
+  { date: 'Nov 2026', title: 'Launched ViceHeistGuide, a GTA 6 fan site', text: '3D map, interactive map and launch tools for players.' },
   { date: 'Nov 2026', title: 'Fixed a false phishing flag on my domain', text: 'Browsers were blocking the site. Got it cleared.' },
   { date: 'Oct 2026', title: 'Started taking client projects', text: 'Same skills, now for other founders.' },
   { date: 'Sep 2026', title: 'Reminders in 4 languages', text: 'DueBlink users get reminders in their own language.' },

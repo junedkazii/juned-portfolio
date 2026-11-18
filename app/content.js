@@ -104,6 +104,52 @@ export const caseStudies = {
     outcome:
       'Live at offboardpro.com, a SaaS I built and launched solo. It shows I can model complex real-world workflows, not just simple forms.',
   },
+  viceheistguide: {
+    name: 'ViceHeistGuide',
+    tagline: 'Free GTA 6 map, tracker and launch tools, built as a fan for other players.',
+    url: 'https://viceheistguide.com',
+    domain: 'viceheistguide.com',
+    role: 'Side project: idea, design, code, content and launch',
+    note: 'Unofficial fan site. Not affiliated with Rockstar Games or Take-Two Interactive.',
+    stack: ['Python (own site generator)', 'HTML, CSS, JavaScript', 'WebGL', 'SVG', 'PWA', 'Cloudflare Pages', 'Google Search Console'],
+    images: [
+      { label: 'Landing page', src: '/viceheistguide-landing.png', path: '' },
+      { label: '3D map', src: '/viceheistguide-3d.png', path: '' },
+      { label: 'Interactive map', src: '/viceheistguide-map.png', path: '/gta-6-interactive-map' },
+    ],
+    problem:
+      "I'm a GTA fan. Before GTA 6 launched, millions of players were searching for the same things: when it unlocks in their country, whether it fits on their console, and what is actually confirmed. Most fan sites mixed rumours with facts and buried answers under ads, so I built the fast, free tools I wanted myself.",
+    built: [
+      'A 3D map of the game world on the home page that you can rotate, built from scratch',
+      'A Google-Maps-style interactive map with filters, search, "mark as found" and shareable links',
+      'A 100% tracker that saves your progress on your device, with no account needed',
+      'An unlock-time tool that shows when the game unlocks in your country, with a live countdown',
+      'A download calculator that checks if the game fits on your storage and how long it takes',
+      'An interactive controller that lights up the right button for every action, for PS5 and Xbox',
+      'Labels on every fact ("Official", "Verified in-game", "Community reported") so readers know what is confirmed',
+      'Installable as an app on Android, iPhone and PC, with dark and light mode',
+    ],
+    hard: [
+      {
+        title: 'A 3D map with no libraries',
+        text: 'I wanted a 3D map on the home page without heavy libraries, so I wrote the renderer directly in WebGL. Place labels overlapped on small phones, so I moved them to the side and kept them inside the screen.',
+      },
+      {
+        title: 'Unlock times across time zones',
+        text: "The game unlocks at midnight in each country's store region, not at one global time. The tool uses the browser's built-in time-zone data to work out the exact local unlock time and countdown.",
+      },
+      {
+        title: 'Working well on every phone',
+        text: 'Tables overflowed, map buttons ignored taps, and the page scrolled behind the search box. I fixed each one and tested on small phones and desktop, so everything fits and responds.',
+      },
+      {
+        title: 'Free hosting that allows ads',
+        text: 'Some free hosting plans block commercial use or have tight limits, so I moved the site to Cloudflare Pages. I cleaned up old parking DNS records and verified the domain in Google Search Console by hand.',
+      },
+    ],
+    outcome:
+      "Live at viceheistguide.com with SSL, deployed from GitHub to Cloudflare Pages, and submitted to Google for indexing. It went live just before GTA 6's release, and I added new guides on launch night. It's too early for traffic numbers.",
+  },
 };
 
 // ───────── Services page (/services) ─────────

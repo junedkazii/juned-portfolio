@@ -22,6 +22,7 @@ export default function SiteFooter() {
           <Link href="/#work">Work</Link>
           <Link href="/work/dueblink">DueBlink case study</Link>
           <Link href="/work/offboardpro">OffboardPro case study</Link>
+          <Link href="/work/viceheistguide">ViceHeistGuide case study</Link>
           <Link href="/services">Services</Link>
           <Link href="/tools">Free tools</Link>
         </nav>

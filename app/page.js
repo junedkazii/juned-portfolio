@@ -19,6 +19,7 @@ import {
   processSteps,
   shipLog,
   faqs,
+  sideProjects,
 } from './data';
 import { tools } from './content';
 
@@ -146,6 +147,36 @@ export default function Home() {
                   <h3>{p.name}</h3>
                   <p className="project-line">{p.line}</p>
                   <p className="proves">What it proves I can build</p>
+                  <ul className="arrow-list">
+                    {p.points.map((pt) => (
+                      <li key={pt}>{pt}</li>
+                    ))}
+                  </ul>
+                  <div className="project-actions">
+                    <a href={p.url} {...ext} className="btn btn-dark">
+                      Open live ↗
+                    </a>
+                    <Link href={`/work/${p.name.toLowerCase()}`} className="link-line">
+                      Read the case study
+                    </Link>
+                  </div>
+                </div>
+                <ProjectShots name={p.name} domain={p.domain} images={p.images} />
+              </article>
+            ))}
+
+            <div className="side-head reveal">
+              <p className="mono side-k">Side project</p>
+              <p>Built as a fan, for fun and practice. Also live.</p>
+            </div>
+            {sideProjects.map((p) => (
+              <article key={p.name} className="project side-project reveal" data-spotlight data-tilt>
+                <div>
+                  <p className="project-meta mono">
+                    {p.number} · Side project · <span className="live">● Live</span>
+                  </p>
+                  <h3>{p.name}</h3>
+                  <p className="project-line">{p.line}</p>
                   <ul className="arrow-list">
                     {p.points.map((pt) => (
                       <li key={pt}>{pt}</li>

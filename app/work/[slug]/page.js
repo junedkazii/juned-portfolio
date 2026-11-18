@@ -7,7 +7,7 @@ import { links } from '../../data';
 
 const ext = { target: '_blank', rel: 'noopener noreferrer' };
 
-// Builds one page per case study: /work/dueblink and /work/offboardpro
+// Builds one page per case study, e.g. /work/dueblink
 export function generateStaticParams() {
   return Object.keys(caseStudies).map((slug) => ({ slug }));
 }
@@ -125,6 +125,7 @@ export default async function CaseStudyPage({ params }) {
             <p className="mono cs-k">Where it is now</p>
           </div>
           <p className="cs-big reveal">{cs.outcome}</p>
+          {cs.note && <p className="cs-note mono reveal">{cs.note}</p>}
         </div>
       </section>
 
