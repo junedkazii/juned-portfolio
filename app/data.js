@@ -90,19 +90,19 @@ export const projects = [
 export const sideProjects = [
   {
     number: '03',
-    name: 'ViceHeistGuide',
-    line: 'Free GTA 6 map, tracker and launch tools, built as a fan for other players.',
+    name: 'SiratHub',
+    line: 'A free Islamic website for Muslims everywhere: prayer times, Qibla, duas with sources and guides, in 4 languages.',
     points: [
-      '3D game map and interactive map built without libraries',
-      'Free launch tools: unlock time, download calculator, controls',
-      'Installable app that works offline, hosted on Cloudflare',
+      'English, Urdu, Hindi and Arabic, including right-to-left layouts',
+      'Prayer times, Qibla compass and tools that work offline',
+      '3D Makkah and Madinah built in WebGL without libraries',
     ],
-    url: 'https://viceheistguide.com',
-    domain: 'viceheistguide.com',
+    url: 'https://sirathub.com',
+    domain: 'sirathub.com',
     images: [
-      { label: 'Landing page', src: '/viceheistguide-landing.png', path: '' },
-      { label: '3D map', src: '/viceheistguide-3d.png', path: '' },
-      { label: 'Interactive map', src: '/viceheistguide-map.png', path: '/gta-6-interactive-map' },
+      { label: 'Home page', src: '/sirathub-landing.png', path: '' },
+      { label: 'Duas', src: '/sirathub-duas.png', path: '/duas' },
+      { label: 'Urdu version', src: '/sirathub-urdu.png', path: '/ur/' },
     ],
   },
 ];
@@ -181,7 +181,7 @@ export const processSteps = [
 
 // Newest first. Add a new line at the TOP every time you ship something.
 export const shipLog = [
-  { date: 'Nov 2026', title: 'Launched ViceHeistGuide, a GTA 6 fan site', text: '3D map, interactive map and launch tools for players.' },
+  { date: 'Nov 2026', title: 'Launched SiratHub, a free Islamic site', text: 'Prayer times, Qibla and duas in 4 languages.' },
   { date: 'Nov 2026', title: 'Fixed a false phishing flag on my domain', text: 'Browsers were blocking the site. Got it cleared.' },
   { date: 'Oct 2026', title: 'Started taking client projects', text: 'Same skills, now for other founders.' },
   { date: 'Sep 2026', title: 'Reminders in 4 languages', text: 'DueBlink users get reminders in their own language.' },

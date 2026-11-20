@@ -167,7 +167,7 @@ export default function Home() {
 
             <div className="side-head reveal">
               <p className="mono side-k">Side project</p>
-              <p>Built as a fan, for fun and practice. Also live.</p>
+              <p>Built for the Ummah, free for everyone. Also live.</p>
             </div>
             {sideProjects.map((p) => (
               <article key={p.name} className="project side-project reveal" data-spotlight data-tilt>

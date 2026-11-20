@@ -104,51 +104,50 @@ export const caseStudies = {
     outcome:
       'Live at offboardpro.com, a SaaS I built and launched solo. It shows I can model complex real-world workflows, not just simple forms.',
   },
-  viceheistguide: {
-    name: 'ViceHeistGuide',
-    tagline: 'Free GTA 6 map, tracker and launch tools, built as a fan for other players.',
-    url: 'https://viceheistguide.com',
-    domain: 'viceheistguide.com',
+  sirathub: {
+    name: 'SiratHub',
+    tagline: 'A free Islamic website for Muslims everywhere: prayer times, Qibla, duas and guides, in 4 languages.',
+    url: 'https://sirathub.com',
+    domain: 'sirathub.com',
     role: 'Side project: idea, design, code, content and launch',
-    note: 'Unofficial fan site. Not affiliated with Rockstar Games or Take-Two Interactive.',
-    stack: ['Python (own site generator)', 'HTML, CSS, JavaScript', 'WebGL', 'SVG', 'PWA', 'Cloudflare Pages', 'Google Search Console'],
+    stack: ['Python (own site generator)', 'HTML, CSS, JavaScript', 'WebGL', 'Service worker (PWA)', 'Cloudflare Pages', 'GitHub'],
     images: [
-      { label: 'Landing page', src: '/viceheistguide-landing.png', path: '' },
-      { label: '3D map', src: '/viceheistguide-3d.png', path: '' },
-      { label: 'Interactive map', src: '/viceheistguide-map.png', path: '/gta-6-interactive-map' },
+      { label: 'Home page', src: '/sirathub-landing.png', path: '' },
+      { label: 'Duas', src: '/sirathub-duas.png', path: '/duas' },
+      { label: 'Urdu version', src: '/sirathub-urdu.png', path: '/ur/' },
     ],
     problem:
-      "I'm a GTA fan. Before GTA 6 launched, millions of players were searching for the same things: when it unlocks in their country, whether it fits on their console, and what is actually confirmed. Most fan sites mixed rumours with facts and buried answers under ads, so I built the fast, free tools I wanted myself.",
+      "Most Islamic websites are slow, full of ads, or don't say where their information comes from. Many Muslims in India also read Urdu or Hindi more easily than English. I wanted one calm, free place for daily practice where every answer is linked to its source.",
     built: [
-      'A 3D map of the game world on the home page that you can rotate, built from scratch',
-      'A Google-Maps-style interactive map with filters, search, "mark as found" and shareable links',
-      'A 100% tracker that saves your progress on your device, with no account needed',
-      'An unlock-time tool that shows when the game unlocks in your country, with a live countdown',
-      'A download calculator that checks if the game fits on your storage and how long it takes',
-      'An interactive controller that lights up the right button for every action, for PS5 and Xbox',
-      'Labels on every fact ("Official", "Verified in-game", "Community reported") so readers know what is confirmed',
-      'Installable as an app on Android, iPhone and PC, with dark and light mode',
+      'Prayer times for any city, with a live countdown to the next prayer',
+      'A Qibla compass and Qibla direction tool',
+      'Daily duas and adhkar in Arabic, with transliteration, meaning and the hadith reference',
+      'Step-by-step guides: how to pray, wudu and ghusl, Hajj and Umrah',
+      'Free tools: zakat calculator, tasbih counter and a kids section',
+      'The whole site in English, Urdu, Hindi and Arabic',
+      '3D Makkah and Madinah on the home page that you can turn',
+      'Installable as an app, and works offline',
     ],
     hard: [
       {
-        title: 'A 3D map with no libraries',
-        text: 'I wanted a 3D map on the home page without heavy libraries, so I wrote the renderer directly in WebGL. Place labels overlapped on small phones, so I moved them to the side and kept them inside the screen.',
+        title: 'Four languages, two directions',
+        text: 'Urdu and Arabic read right to left, so every layout had to flip cleanly. I built a translation system into my own site generator, so each page is written once and built in all four languages.',
       },
       {
-        title: 'Unlock times across time zones',
-        text: "The game unlocks at midnight in each country's store region, not at one global time. The tool uses the browser's built-in time-zone data to work out the exact local unlock time and countdown.",
+        title: '3D scenes with no libraries',
+        text: 'I wrote the Makkah and Madinah scenes directly in WebGL to keep the site fast. Some phones drop the 3D context in the background, so the scene now recovers by itself instead of going blank.',
       },
       {
-        title: 'Working well on every phone',
-        text: 'Tables overflowed, map buttons ignored taps, and the page scrolled behind the search box. I fixed each one and tested on small phones and desktop, so everything fits and responds.',
+        title: 'Getting every dua exactly right',
+        text: 'Religious text has to be correct. I checked the duas against their hadith sources, linked each one to its reference, and added an Arabic font that shows every mark clearly.',
       },
       {
-        title: 'Free hosting that allows ads',
-        text: 'Some free hosting plans block commercial use or have tight limits, so I moved the site to Cloudflare Pages. I cleaned up old parking DNS records and verified the domain in Google Search Console by hand.',
+        title: 'Fast and usable offline',
+        text: 'A service worker saves the pages and fonts, so prayer times and duas still open with a weak or no connection.',
       },
     ],
     outcome:
-      "Live at viceheistguide.com with SSL, deployed from GitHub to Cloudflare Pages, and submitted to Google for indexing. It went live just before GTA 6's release, and I added new guides on launch night. It's too early for traffic numbers.",
+      'Live at sirathub.com, deployed from GitHub to Cloudflare Pages. Free for everyone, with no paywalls.',
   },
 };
 
