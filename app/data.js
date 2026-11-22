@@ -51,7 +51,7 @@ export const projects = [
   {
     number: '01',
     name: 'DueBlink',
-    line: 'A payment reminder SaaS for freelancers.',
+    line: 'A payment reminder SaaS for freelancers and small businesses.',
     points: [
       'Payments with Razorpay and Dodo, verified on the server',
       'AI features with cost limits, so the bill stays under control',

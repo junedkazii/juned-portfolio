@@ -14,7 +14,7 @@ export function waLink(message) {
 export const caseStudies = {
   dueblink: {
     name: 'DueBlink',
-    tagline: 'A payment reminder SaaS that chases late invoices for freelancers.',
+    tagline: 'A payment reminder SaaS that chases late invoices for freelancers and small businesses.',
     url: 'https://dueblink.com',
     domain: 'dueblink.com',
     role: 'Solo founder: design, code, payments, launch',
@@ -24,7 +24,7 @@ export const caseStudies = {
       { label: 'Dashboard', src: '/dueblink-dashboard.png', path: '/dashboard' },
     ],
     problem:
-      "Freelancers lose real money because nobody follows up on late invoices. Chasing clients feels awkward, so reminders get sent late or never. I wanted a tool that does the chasing politely and on time, so the freelancer doesn't have to.",
+      "Freelancers and small businesses lose real money because nobody follows up on late invoices. Chasing clients feels awkward, so reminders get sent late or never. I wanted a tool that does the chasing politely and on time, so the owner doesn't have to.",
     built: [
       'A daily "who to chase" list on the dashboard, so you see exactly who owes you today',
       'Automatic email reminders on day 0, 3 and 7 that never skip a step',
