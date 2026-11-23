@@ -140,6 +140,9 @@ export default async function CaseStudyPage({ params }) {
             <a href={links.booking} {...ext} className="btn btn-accent" data-magnetic>
               Book a free 20-min call
             </a>
+            <a href={links.whatsapp} {...ext} className="btn btn-ghost-dark">
+              WhatsApp
+            </a>
             <Link href={`/work/${nextSlug}`} className="btn btn-ghost-dark">
               Next: {next.name} →
             </Link>

@@ -1,0 +1,227 @@
+/* ─────────────────────────────────────────────────────────────
+   Opening animation ("Idea → Built → Live." + name reveal)
+   Hidden by default. Shown only while <html> has "intro-on".
+   ───────────────────────────────────────────────────────────── */
+
+.intro {
+  display: none;
+}
+
+html.intro-on .intro,
+.intro.intro-out {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: #141218;
+  color: #f3efe8;
+  transition: transform 0.75s cubic-bezier(0.76, 0, 0.24, 1), border-radius 0.75s cubic-bezier(0.76, 0, 0.24, 1);
+  /* Safety net: if anything goes wrong, never block the site */
+  animation: intro-failsafe 0s linear 6s forwards;
+}
+
+.intro.intro-out {
+  transform: translateY(-100%);
+  border-radius: 0 0 50% 50% / 0 0 12% 12%;
+  pointer-events: none;
+}
+
+/* No scrolling while it plays */
+html.intro-on,
+html.intro-on body {
+  overflow: hidden;
+}
+
+/* Hold the hero's own word animation until the curtain lifts */
+html.intro-on .words-now .w > span,
+html.intro-on .words-now .squiggle path {
+  animation-play-state: paused;
+}
+
+/* Stage 1: Idea → Built → Live. */
+.intro-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 26px;
+  transition: opacity 0.3s ease, transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.intro-stack.away {
+  opacity: 0;
+  transform: translateY(-40px);
+}
+
+.intro-words {
+  position: relative;
+  height: 1.1em;
+  width: min(520px, 90vw);
+  overflow: hidden;
+  text-align: center;
+  font-size: clamp(56px, 11vw, 88px);
+}
+
+.intro-w {
+  position: absolute;
+  inset: 0;
+  font-family: var(--font-sans), sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+  transform: translateY(100%);
+}
+
+.intro-live {
+  font-family: var(--font-serif), serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  color: #ff5a1f;
+}
+
+.intro-w.in {
+  animation: intro-in 0.34s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.intro-w.gone {
+  animation: intro-gone 0.34s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+@keyframes intro-in {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: none;
+  }
+}
+
+@keyframes intro-gone {
+  from {
+    transform: none;
+  }
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+.intro-track {
+  width: min(300px, 70vw);
+  height: 3px;
+  border-radius: 9px;
+  background: #2c2932;
+  overflow: hidden;
+}
+
+.intro-track span {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: #ff5a1f;
+  border-radius: 9px;
+}
+
+.intro-track.go span {
+  width: 100%;
+  transition: width 1.05s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.intro-steps {
+  display: flex;
+  gap: 44px;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #6f6a78;
+}
+
+.intro-steps span {
+  transition: color 0.2s ease;
+}
+
+.intro-steps span.on {
+  color: #f3efe8;
+}
+
+/* Stage 2: name reveal */
+.intro-name {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  pointer-events: none;
+}
+
+.intro-big {
+  display: flex;
+  overflow: hidden;
+  padding-bottom: 0.08em;
+  margin: 0;
+  font-family: var(--font-sans), sans-serif;
+  font-size: clamp(56px, 12vw, 104px);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1;
+}
+
+.intro-big span {
+  display: inline-block;
+  transform: translateY(110%);
+}
+
+.intro-big .intro-sp {
+  width: 0.26em;
+}
+
+.intro-big .intro-dot {
+  color: #ff5a1f;
+  transform: scale(0);
+  transform-origin: 50% 80%;
+}
+
+.intro-name.in .intro-big span {
+  transform: none;
+  transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition-delay: var(--d, 0ms);
+}
+
+.intro-name.in .intro-big .intro-dot {
+  transform: none;
+  transition: transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1) 0.42s;
+}
+
+.intro-sub {
+  margin: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #8a8494;
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.intro-name.in .intro-sub {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.4s ease 0.45s, transform 0.4s ease 0.45s;
+}
+
+@keyframes intro-failsafe {
+  to {
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
+/* Never show it to people who turn off motion */
+@media (prefers-reduced-motion: reduce) {
+  .intro {
+    display: none !important;
+  }
+}

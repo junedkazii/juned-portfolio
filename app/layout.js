@@ -1,9 +1,11 @@
 import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google';
 import './globals.css';
+import './intro.css';
 import { site } from './data';
 import SiteHeader from './components/SiteHeader';
 import SiteFooter from './components/SiteFooter';
 import Reveal from './components/Reveal';
+import Intro, { IntroOverlay } from './components/Intro';
 
 const sans = Geist({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
 const mono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' });
@@ -26,6 +28,13 @@ const themeScript = `(function () {
     theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
   root.setAttribute('data-theme', theme);
+
+  // Opening animation: home page, first visit this session, motion allowed
+  try {
+    var seen = sessionStorage.getItem('intro-seen');
+    var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!seen && !calm && location.pathname === '/') root.classList.add('intro-on');
+  } catch (e) {}
 })();`;
 
 export const metadata = {
@@ -60,10 +69,13 @@ export default function RootLayout({ children }) {
       <head>
         {/* Runs before the page paints:
             1. turns on the scroll animations only when JavaScript works, so content is never hidden
-            2. picks light or dark mode (saved choice first, otherwise the device setting), so there's no white flash */}
+            2. picks light or dark mode (saved choice first, otherwise the device setting), so there's no white flash
+            3. decides whether to play the opening animation */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>
+        <IntroOverlay name={site.name} tagline={site.title} />
+        <Intro />
         <SiteHeader />
         {children}
         <SiteFooter />

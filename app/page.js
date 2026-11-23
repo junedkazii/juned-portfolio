@@ -239,7 +239,7 @@ export default function Home() {
                   </span>
                   <span>{featuredService.time}</span>
                 </div>
-                <a href={links.booking} {...ext} className="btn btn-accent" data-magnetic>
+                <a href={links.whatsapp} {...ext} className="btn btn-accent" data-magnetic>
                   Ask about an MVP →
                 </a>
               </div>
@@ -270,7 +270,7 @@ export default function Home() {
                     <li key={pt}>{pt}</li>
                   ))}
                 </ul>
-                <a href={links.booking} {...ext} className="btn btn-dark">
+                <a href={links.whatsapp} {...ext} className="btn btn-dark">
                   {rescue.cta}
                 </a>
               </div>

@@ -27,7 +27,7 @@ export default function SiteFooter() {
           <Link href="/tools">Free tools</Link>
         </nav>
         <nav aria-label="Contact" className="footer-links">
-          <a href={links.booking} {...ext}>
+          <a href={links.whatsapp} {...ext}>
             WhatsApp
           </a>
           <a href={links.email}>Email</a>
