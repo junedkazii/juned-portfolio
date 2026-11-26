@@ -1,10 +1,13 @@
 import ToolLayout from '../../components/ToolLayout';
 import FeeCalculator from '../../components/tools/FeeCalculator';
+import { pageMeta } from '../../seo';
 
-export const metadata = {
-  title: 'Payment gateway fee calculator',
-  description: 'Compare what Razorpay, Stripe India and Dodo Payments take from each sale, for customers in India or abroad.',
-};
+export const metadata = pageMeta({
+  title: "Razorpay vs Stripe vs Dodo Fee Calculator",
+  description:
+    "Compare what Razorpay, Stripe India and Dodo Payments really take from each sale, including GST, for one-time payments and subscriptions.",
+  path: '/tools/payment-fee-calculator',
+});
 
 export default function Page() {
   return (

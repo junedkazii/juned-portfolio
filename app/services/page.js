@@ -3,14 +3,16 @@ import SplitWords from '../components/SplitWords';
 import AiBuilders from '../components/AiBuilders';
 import { featuredService, services, processSteps, links } from '../data';
 import { serviceDetails, waLink } from '../content';
+import { pageMeta } from '../seo';
 
 const ext = { target: '_blank', rel: 'noopener noreferrer' };
 
-export const metadata = {
-  title: 'Services and prices',
+export const metadata = pageMeta({
+  title: "SaaS MVP Development Services & Prices",
   description:
-    'Fixed-price packages: SaaS MVPs, payments setup, AI features, landing pages, launch fixes, AI app rescue and monthly care.',
-};
+    "Fixed-price SaaS development: MVPs from ₹75,000 ($2,500), Razorpay and Stripe payments, AI features, landing pages, launch fixes and AI app rescue.",
+  path: '/services',
+});
 
 export default function ServicesPage() {
   const all = [{ ...featuredService, time: featuredService.time, featured: true }, ...services];

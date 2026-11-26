@@ -23,6 +23,9 @@ import {
 } from './data';
 import { tools } from './content';
 
+// The home page's own address, so Google never treats a copy as a separate page
+export const metadata = { alternates: { canonical: '/' } };
+
 const ext = { target: '_blank', rel: 'noopener noreferrer' };
 
 export default function Home() {

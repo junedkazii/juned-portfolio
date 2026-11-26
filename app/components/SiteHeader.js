@@ -20,6 +20,7 @@ export default function SiteHeader() {
               <Link href="/#work">Work</Link>
               <Link href="/services">Services</Link>
               <Link href="/tools">Free tools</Link>
+              <Link href="/guides">Guides</Link>
               <Link href="/#contact">Contact</Link>
             </div>
             <ThemeToggle />

@@ -1,10 +1,13 @@
 import ToolLayout from '../../components/ToolLayout';
 import MvpCalculator from '../../components/tools/MvpCalculator';
+import { pageMeta } from '../../seo';
 
-export const metadata = {
-  title: 'SaaS MVP cost calculator',
-  description: 'Pick the features your SaaS needs and get an instant price and timeline estimate, in ₹ or $.',
-};
+export const metadata = pageMeta({
+  title: "SaaS MVP Cost Calculator (₹ and $)",
+  description:
+    "How much does a SaaS MVP cost? Pick the features you need and get an instant price and timeline in ₹ or $, based on real fixed-price packages.",
+  path: '/tools/mvp-cost-calculator',
+});
 
 export default function Page() {
   return (

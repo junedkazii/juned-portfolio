@@ -4,6 +4,7 @@ import ProjectShots from '../../components/ProjectShots';
 import SplitWords from '../../components/SplitWords';
 import { caseStudies } from '../../content';
 import { links } from '../../data';
+import { pageMeta } from '../../seo';
 
 const ext = { target: '_blank', rel: 'noopener noreferrer' };
 
@@ -16,10 +17,11 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
   const cs = caseStudies[slug];
   if (!cs) return {};
-  return {
-    title: `${cs.name} case study`,
-    description: cs.tagline,
-  };
+  return pageMeta({
+    title: `${cs.name} Case Study`,
+    description: cs.stack ? `${cs.tagline} Built with ${cs.stack.slice(0, 3).join(', ')}.` : cs.tagline,
+    path: `/work/${slug}`,
+  });
 }
 
 export default async function CaseStudyPage({ params }) {

@@ -1,12 +1,14 @@
 import Link from 'next/link';
 import SplitWords from '../components/SplitWords';
 import { tools } from '../content';
+import { pageMeta } from '../seo';
 
-export const metadata = {
-  title: 'Free tools for founders',
+export const metadata = pageMeta({
+  title: "Free Tools for SaaS Founders",
   description:
-    'Free tools for SaaS founders: MVP cost calculator, payment gateway fee calculator, launch checklist and AI app rescue check.',
-};
+    "Free tools for SaaS founders: MVP cost calculator, Razorpay vs Stripe fee calculator, launch checklist and a Lovable or Bolt app rescue check.",
+  path: '/tools',
+});
 
 export default function ToolsPage() {
   return (

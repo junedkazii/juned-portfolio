@@ -1,0 +1,193 @@
+/* ─────────────────────────────────────────────────────────────
+   Guides (/guides): reading pages for founders with AI-built apps
+   ───────────────────────────────────────────────────────────── */
+
+.page-title.gd-title {
+  font-size: clamp(34px, 5.2vw, 60px);
+  max-width: 18ch;
+}
+
+.gd-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  margin-top: 18px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.gd-layout {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 56px;
+  align-items: start;
+}
+
+.gd-toc {
+  position: sticky;
+  top: 110px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.gd-toc p {
+  margin: 0 0 8px;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+
+.gd-toc a {
+  color: var(--muted);
+  text-decoration: none;
+  padding: 6px 0;
+  line-height: 1.35;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.gd-toc a:hover {
+  color: var(--accent-text);
+}
+
+.gd-article {
+  max-width: 720px;
+  min-width: 0;
+}
+
+.gd-article h2 {
+  margin: 48px 0 14px;
+  font-size: clamp(24px, 3vw, 30px);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  scroll-margin-top: 110px;
+}
+
+.gd-article h2:first-child {
+  margin-top: 0;
+}
+
+.gd-article p,
+.gd-article li {
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+.gd-article p {
+  margin: 0 0 16px;
+}
+
+.gd-article ul,
+.gd-article ol {
+  margin: 0 0 18px;
+  padding-left: 22px;
+}
+
+.gd-article li {
+  margin: 0 0 10px;
+  padding-left: 4px;
+}
+
+.gd-article li::marker {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.gd-table {
+  overflow-x: auto;
+  margin: 8px 0 22px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--card);
+}
+
+.gd-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.gd-table th,
+.gd-table td {
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+  line-height: 1.5;
+  border-bottom: 1px solid var(--line);
+}
+
+.gd-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.gd-table th {
+  background: var(--soft);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.gd-note {
+  margin: 4px 0 22px;
+  padding: 16px 18px;
+  border-radius: 16px;
+  background: var(--soft);
+  border: 1px solid var(--line);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.gd-note b {
+  color: var(--accent-text);
+}
+
+.gd-sources {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.gd-sources h2 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.gd-sources li {
+  font-size: 15px;
+}
+
+.gd-sources a {
+  color: var(--accent-text);
+}
+
+.gd-more {
+  margin-top: 56px;
+}
+
+.gd-more h2 {
+  margin: 0 0 18px;
+  font-size: clamp(22px, 3vw, 28px);
+  letter-spacing: -0.03em;
+}
+
+@media (max-width: 960px) {
+  .gd-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .gd-toc {
+    position: static;
+    padding: 16px 18px;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: var(--card);
+  }
+}

@@ -1,10 +1,13 @@
 import ToolLayout from '../../components/ToolLayout';
 import LaunchChecklist from '../../components/tools/LaunchChecklist';
+import { pageMeta } from '../../seo';
 
-export const metadata = {
-  title: 'Launch readiness checklist',
-  description: '24 checks across domain, emails, payments, security and growth, with a live launch score.',
-};
+export const metadata = pageMeta({
+  title: "SaaS Launch Checklist: 24 Checks Before Going Live",
+  description:
+    "24 checks across domain, emails, payments and security, with a live score, so your SaaS is ready before real customers arrive.",
+  path: '/tools/launch-checklist',
+});
 
 export default function Page() {
   return (

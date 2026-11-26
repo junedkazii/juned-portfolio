@@ -6,6 +6,7 @@ import SiteHeader from './components/SiteHeader';
 import SiteFooter from './components/SiteFooter';
 import Reveal from './components/Reveal';
 import Intro, { IntroOverlay } from './components/Intro';
+import JsonLd from './components/JsonLd';
 
 const sans = Geist({ subsets: ['latin'], variable: '--font-sans', display: 'swap' });
 const mono = Geist_Mono({ subsets: ['latin'], variable: '--font-mono', display: 'swap' });
@@ -17,7 +18,10 @@ const serif = Instrument_Serif({
   display: 'swap',
 });
 
-const fullTitle = `${site.name} · ${site.title}`;
+const fullTitle = `${site.name} · SaaS Developer for Founders | Next.js MVPs with Payments`;
+// What Google shows under your name in search results (keep it under about 155 characters)
+const seoDescription =
+  'I build SaaS apps that go live and take payments: MVPs, Razorpay and Stripe payments, AI features and AI app rescue. India-based, working worldwide.';
 
 const themeScript = `(function () {
   var root = document.documentElement;
@@ -40,18 +44,40 @@ const themeScript = `(function () {
 export const metadata = {
   metadataBase: new URL(site.url),
   title: { default: fullTitle, template: `%s · ${site.name}` },
-  description: site.description,
+  description: seoDescription,
+  applicationName: site.name,
+  authors: [{ name: site.name, url: site.url }],
+  creator: site.name,
+  keywords: [
+    'SaaS developer',
+    'SaaS developer India',
+    'hire SaaS developer',
+    'MVP development',
+    'Next.js developer',
+    'Firebase developer',
+    'Razorpay integration',
+    'Stripe integration',
+    'AI app rescue',
+    'Lovable app fix',
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
+  },
+  formatDetection: { telephone: false },
   openGraph: {
     title: fullTitle,
-    description: site.description,
+    description: seoDescription,
     url: site.url,
     siteName: site.name,
     type: 'website',
+    locale: 'en_IN',
   },
   twitter: {
     card: 'summary_large_image',
     title: fullTitle,
-    description: site.description,
+    description: seoDescription,
   },
 };
 
@@ -74,6 +100,7 @@ export default function RootLayout({ children }) {
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>
+        <JsonLd />
         <IntroOverlay name={site.name} tagline={site.title} />
         <Intro />
         <SiteHeader />
